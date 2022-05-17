@@ -3,6 +3,12 @@ var interval = 30;    //  if the script runs every 30 minutes; change otherwise
   var date = new Date();
   var day = date.getDay();
   var hour = date.getHours();
+  var emailcontent = `
+  <p><strong>Thanks for you email</strong></p>
+  <p>Unfortunately, we are now closed for the day and will get back to you in the morning.</p>
+  <p>Our current <b>shop hours are 9am – 4pm.</b> 
+  <p>Thanks, Shotover Canyon Swing Team</p>
+  `;  
   var sendreplyemail = false;
   //ORIGINAL if ([5,6,0].indexOf(day) > -1 || (hour < 8) || (hour >= 17)) {
   if ((hour < 9) || (hour >= 16)) {
@@ -21,8 +27,11 @@ var interval = 30;    //  if the script runs every 30 minutes; change otherwise
         }
         //Sends an email and mark it as read
         if (sendreplyemail === true){
-          threads[i].reply("Thanks for your email. Unfortunately, we are now closed for the day and will get back to you in the morning. Our current shop hours are 9am – 4pm. Thanks, Shotover Canyon Swing Team");
-          threads[i].markRead();  
+          threads[i].reply("incapable of HTML", {
+              htmlBody: emailcontent,
+              noReply: false //If it is true the email will be send using noreply@
+              });
+          threads[i].markRead();
         }
       }
     }
