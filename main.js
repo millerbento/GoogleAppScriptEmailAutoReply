@@ -29,7 +29,7 @@ var interval = 30;    //  if the script runs every 30 minutes; change otherwise
         if (sendreplyemail === true){
           threads[i].reply("incapable of HTML", {
               htmlBody: emailcontent,
-              noReply: false //If it is true the email will be send using noreply@
+              noReply: false //If it is true the email will be sent using noreply@ to prevent users from replying to it
               });
           threads[i].markRead();
         }
