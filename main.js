@@ -7,10 +7,8 @@ var interval = 30;    //  if the script runs every 30 minutes; change otherwise
   <p><strong>Thanks for you email</strong></p>
   <p>Unfortunately, we are now closed for the day and will get back to you in the morning.</p>
   <p>Our current <b>shop hours are 9am – 4pm.</b> 
-  <p>Thanks, Shotover Canyon Swing Team</p>
   `;  
   var sendreplyemail = false;
-  //ORIGINAL if ([5,6,0].indexOf(day) > -1 || (hour < 8) || (hour >= 17)) {
   if ((hour < 9) || (hour >= 16)) {
     var timeFrom = Math.floor(date.valueOf()/1000) - 60 * interval;
     var threads = GmailApp.search('is:inbox after:' + timeFrom);
